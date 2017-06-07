@@ -1,0 +1,163 @@
+@font-face{
+    font-family: MG_Title;
+    src: url(../fonts/MG_Title.TTF);
+}
+@font-face {
+    font-family: MG_SubTitle;
+    src: url(../fonts/MG_SubTitle.TTF);
+}
+@font-face{
+    font-family: MG_Standard;
+    src: url(../fonts/MG_Standard.TTF);
+}
+body > section {
+    background-image: url(../images/MainBg.jpg);
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: 75px;
+}
+.mobile_message{
+    width: 100vw;
+    height: 100vh;
+}
+header {
+    height: 125px;
+    background-color: #BFB5B4;
+}
+.headerTitle {
+    margin-top: 0;
+    padding-top: 25px;
+    text-align: center;
+    font-size: 45px;
+    font-family: MG_Title;
+    color: red;
+    text-shadow: 2px 2px #ffffff;
+}
+.headerSubTitle {
+    font-size: 15px;
+    font-family: MG_SubTitle;
+    font-weight: 100;
+    color: white;
+    text-align: center;
+    margin-top: -15px;
+}
+header > div.container {
+    background-image: url(../images/GameLogo.png);
+    background-position: 25px 15px;
+    background-size: 95px 95px;
+    background-repeat: no-repeat;
+}
+.nav > li{
+    display: inline-block;
+    font-family: MG_Title;
+    text-shadow: 2px 2px #ffffff;
+}
+.nav > li > a {
+    color: red;
+    padding: 0 10px;
+}
+aside{
+    font-family: MG_Standard;
+    border-radius: 10px;
+}
+aside > h2 {
+    font-weight: 700;
+    color: #FFC500;
+}
+.label {
+    font-size: 25px;
+    color: #FFC500;
+    display: inline;
+    padding: 0;
+    font-weight: 700;
+    line-height: 2;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0;
+}
+button.btn {
+    margin-top: 95px;
+    background-color: #FFC500;
+    color: white;
+    padding-bottom: 5px;
+}
+#stats {
+    width: 15%;
+    height: 400px;
+    margin-top: 75px;
+    margin-right: 5px;
+}
+.card {
+    border-radius: 10px;
+    width: 100px;
+    height: 150px;
+    margin: 15px;
+    background-color: #FFFFFF;
+}
+.front{
+    background-image: url(../images/CardLogo.png);
+    background-position: center;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    margin-top: 25px;
+    margin-left: -15px;
+}
+section.col-xs-9{
+    margin-left: 25px;
+}
+section.col-xs-9 > div.row {
+    margin-left: 25px;
+}
+/*ABOUT ME CSS*/
+body > section.container-fluid{
+    font-family: MG_Standard;
+    color: #FFC500;
+}
+.fontColorChange{
+    color:white;
+}
+.skillsText{
+    font-size: 25px;
+}
+.aboutImage{
+    width: 400px;
+    height: 400px;
+}
+ul.skillsText > li {
+    color: white;
+}
+/*END ABOUT ME CSS*/
+@media (max-width: 1199px){
+    .card {
+        margin: 5px;
+    }
+    section.col-xs-9{
+        margin-left: 30px;
+    }
+}
+@media (max-width: 1023px){
+
+    section.col-xs-9 > div.row {
+        margin-left: 25px;
+        margin-bottom: 10px;
+    }
+    .card{
+    border-radius: 10px;
+    width: 85px;
+    height: 135px;
+    margin: 1px;
+    background: #FFFFFF;
+    }
+    .front {
+        background-size: 85px 85px;
+        height: 85px;
+        width: 85px;
+        margin-top: 25px;
+        margin-left: -15px
+    }
+}
