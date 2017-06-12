@@ -15,7 +15,6 @@ body > section {
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
     padding-top: 75px;
 }
 .mobile_message{
@@ -66,6 +65,9 @@ aside > h2 {
     font-weight: 700;
     color: #FFC500;
 }
+aside > div.accuracy > p.value {
+    font-family: "Arial Black";
+}
 .label {
     font-size: 25px;
     color: #FFC500;
@@ -78,7 +80,11 @@ aside > h2 {
     vertical-align: baseline;
     border-radius: 0;
 }
-button.btn {
+.value {
+    color: #FFC500;
+    font-size: 25px;
+}
+button.reset {
     margin-top: 95px;
     background-color: #FFC500;
     color: white;
@@ -92,9 +98,9 @@ button.btn {
 }
 .card {
     border-radius: 10px;
-    width: 100px;
-    height: 150px;
-    margin: 15px;
+    width: 125px;
+    height: 215px;
+    margin: 5px;
     background-color: #FFFFFF;
     position: relative;
 }
@@ -124,9 +130,18 @@ button.btn {
 }
 section.col-xs-9{
     margin-left: 25px;
+    margin-bottom: 75px;
 }
 section.col-xs-9 > div.row {
     margin-left: 25px;
+}
+footer{
+    background-color: #BFB5B4;
+    height: 125px;
+}
+.copyright{
+    position: relative;
+    top: 55px;
 }
 /*ABOUT ME CSS*/
 body > section.container-fluid{
@@ -150,6 +165,8 @@ ul.skillsText > li {
 @media (max-width: 1199px){
     .card {
         margin: 5px;
+        width: 104px;
+        height: 185px;
     }
     section.col-xs-9{
         margin-left: 30px;
@@ -163,5 +180,11 @@ ul.skillsText > li {
     }
     .card{
     margin: 1px;
+    }
+}
+@media (max-width: 991px){
+    .card {
+        width: 85px;
+        height: 140px;
     }
 }
