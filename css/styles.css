@@ -4,11 +4,11 @@
 }
 @font-face {
     font-family: MG_SubTitle;
-    src: url(../fonts/MG_SubTitle.TTF);
+    src: url(../fonts/MG_SubTitle.ttf);
 }
 @font-face{
     font-family: MG_Standard;
-    src: url(../fonts/MG_Standard.TTF);
+    src: url(../fonts/MG_Standard.ttf);
 }
 body > section {
     background-image: url(../images/MainBg.jpg);
