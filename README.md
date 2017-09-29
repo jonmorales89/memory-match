@@ -11,4 +11,4 @@ accuracy of their choices.
 
 >I designed this application after the Metal Gear Solid video game franchise. I've always following this game franchise and wanted to include aspects from the first game that initially hooked me in. 
 
-Live Link [Here](http://jonathanmorales.io/apps/memory-match/ "Memory Match Game")
+Live Demo [Here](http://jonathanmorales.io/apps/memory-match/ "Memory Match Game")
