@@ -4,6 +4,7 @@ $(document).ready(function(){
     $('.back').click(card_clicked);
     $('button.reset').click(reset_stats);
 });
+
 var first_card_clicked = null;
 var second_card_clicked = null;
 var total_possible_matches = 9;
@@ -13,6 +14,7 @@ var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
+
 function gameBoard(){
     var imgCounter = 0;
     for(var i = 0; i < 3; i ++){
@@ -50,7 +52,7 @@ function display_stats(){
     } else {
         accuracy = Math.floor((matches / attempts) * 100);
         $('div.attempts > p.value').text(attempts);
-        $('div.accuracy > p.value').html(accuracy + "&#37;");
+        $('div.accuracy > p.value').html(accuracy + " <span>&#37;</span>");
     }
 }
 function reset_stats(){
@@ -76,12 +78,11 @@ function displayCards(){
 }
 function winner(){
     var modal = $('<div>').attr({id: 'mgsModal', class:'modal fade modal-lg', style:'margin: auto; top:25%;',role: 'dialog', 'aria-labelledby' : 'myLargeModalLabel' });
-    var modalDiag = $('<div>').attr({class : 'modal-dialog modal-lg', role: 'document'});
+    var modalDiag = $('<div>').attr({class : 'modal-dialog', role: 'document'});
     var modalCont = $('<div>').attr({class : 'modal-content'});
-    var modalHead = $('<div>').attr({class : 'modal-header'}).html("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button><h4 class='modal-title' id='modalTitle'>Winner!</h4>");
-    var modalBody = $('<div>').attr({class : 'modal-body'}).html("stuff");
-    var modalFoot = $('<div>').attr({class : 'modal-footer'}).html("<button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>");
-    $(modalCont).append(modalHead, modalBody, modalFoot);
+    var modalHead = $('<div>').attr({class : 'modal-header'}).html("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button><h3 class='modal-title text-center' id='modalTitle'>You Won!</h3>");
+    var modalBody = $('<div>').attr({class : 'modal-body'})
+    $(modalCont).append(modalHead, modalBody);
     $(modalDiag).append(modalCont);
     $(modal).append(modalDiag);
     $('section').append(modal);
