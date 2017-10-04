@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    gameBoard();
+    randomize();
     $('.back').click(card_clicked);
     $('button.reset').click(reset_stats);
 });
@@ -6,13 +8,37 @@ $(document).ready(function(){
 var first_card_clicked = null;
 var second_card_clicked = null;
 var total_possible_matches = 9;
-var match_counter = 0;
 var reset1 = null;
 var reset2 = null;
-var matches = 0; //Every time the application finds a match this variable should be incremented by 1
-var attempts = 0; //Every time a user attempts a match (clicks 2nd card) the attempts should be incremented by 1
-var accuracy = 0; // Accuracy is defined as a percentage of matches / attempts
-var games_played = 0; //When the game is reset by clicking the reset button the games_played should be incremented by 1
+var matches = 0;
+var attempts = 0;
+var accuracy = 0;
+var games_played = 0;
+
+function gameBoard(){
+    var imgCounter = 0;
+    for(var i = 0; i < 3; i ++){
+        var row = $("<div>").addClass("row");
+        row.appendTo(".col-xs-9");
+        for(var j = 0; j < 6; j++){
+            var card = $("<div>").addClass("card col-xs-2");
+            var front = $("<div>").addClass("front");
+            var img = $("<img>").addClass("" + ++imgCounter + "");
+            var back = $("<div>").addClass("back");
+            img.appendTo(front);
+            front.appendTo(card);
+            back.appendTo(card);
+            card.appendTo(row);
+        }
+    }
+}
+function randomize(){
+var imgNames = ['bigBoss','liquidS','masterMiller','metalGear','psychoM','revolverO','sniper_wolf','solid_snake','vulcan_raven', 'bigBoss','liquidS','masterMiller','metalGear','psychoM','revolverO','sniper_wolf','solid_snake','vulcan_raven'];
+    for(var i = 1; i <= 18; i++){
+        var randomNum = Math.floor(Math.random() * imgNames.length);
+        $("." + i + "").attr({src : "images/" + imgNames.splice(randomNum,1) + ".jpg"});   
+    }
+}
 function shake(){
     $(".front").effect( "shake", {times:4}, 500 );
 }
@@ -26,19 +52,18 @@ function display_stats(){
     } else {
         accuracy = Math.floor((matches / attempts) * 100);
         $('div.attempts > p.value').text(attempts);
-        $('div.accuracy > p.value').html(accuracy + "&#37;");
+        $('div.accuracy > p.value').html(accuracy + " <span>&#37;</span>");
     }
 }
-
 function reset_stats(){
     matches = 0;
     attempts = 0;
     accuracy = 0;
-    match_counter = 0;
+    matches = 0;
     display_stats();
+    randomize();
     setTimeout(displayCards, 800);
 }
-
 function resetCards(){
     first_card_clicked = null;
     second_card_clicked = null;
@@ -46,58 +71,48 @@ function resetCards(){
     $(reset2).removeClass('hideCard');
     $('.back').click(card_clicked);
 }
-
 function displayCards(){
     $('.back').removeClass('hideCard');
     $('.back').effect('shake',{times:4},1000);
     $('.front').effect('shake',{times:4},1000);
 }
-
 function winner(){
-    var div1 = $('<div>').attr({id: 'myModal', class:'modal fade modal-lg', style:'margin: auto; top:25%;',role: 'dialog', 'aria-labelledby' : 'myLargeModalLabel' });
-    var div2 = $('<div>').attr({class:'modal-dialog modal-lg', role: 'document'});
-    var div3 = $('<div>').attr({class:'modal-content'});
-    var divCont = $('<div>').attr({class:'modal-body', style:''}).html("<h1 class='text-center'>You Won!</h1><div class='modal-footer'><button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button></div>");
-    $(div3).append(divCont);
-    $(div2).append(div3);
-    $(div1).append(div2);
-    $('section').append(div1);
-    $('#myModal').modal('show');
-
+    var modal = $('<div>').attr({id: 'mgsModal', class:'modal fade modal-lg', style:'margin: auto; top:25%;',role: 'dialog', 'aria-labelledby' : 'myLargeModalLabel' });
+    var modalDiag = $('<div>').attr({class : 'modal-dialog', role: 'document'});
+    var modalCont = $('<div>').attr({class : 'modal-content'});
+    var modalHead = $('<div>').attr({class : 'modal-header'}).html("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button><h3 class='modal-title text-center' id='modalTitle'>You Won!</h3>");
+    var modalBody = $('<div>').attr({class : 'modal-body'})
+    $(modalCont).append(modalHead, modalBody);
+    $(modalDiag).append(modalCont);
+    $(modal).append(modalDiag);
+    $('section').append(modal);
+    $('#mgsModal').modal('show');
 }
-
 function card_clicked(){
     if(first_card_clicked===null){
         first_card_clicked = $(this).parent().children().children().attr('src');
-        console.log("first_card_clicked: ",first_card_clicked);
         $(this).addClass('hideCard');
         reset1 = this;
-        console.log(this);
     } else {
         second_card_clicked = $(this).parent().children().children().attr('src');
-        console.log("second card is clicked;", second_card_clicked);
         $(this).addClass('hideCard');
         reset2 = this;
         attempts++;
-        display_stats();
         if(first_card_clicked == second_card_clicked){
-            match_counter++;
-            console.log("match made");
             first_card_clicked = null;
             second_card_clicked = null;
             matches++;
             display_stats();
-            if(match_counter == total_possible_matches){
-                console.log("you won");
+            if(matches == total_possible_matches){
                 reset_stats();
                 winner();
             } else {
-                console.log("click handler complete");
+                return
             }
         } else {
-            console.log('wrong match');
             $('.back').off('click');
             setTimeout(resetCards,800);
+            display_stats();
         }
     }
 }

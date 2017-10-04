@@ -18,6 +18,14 @@ body > section {
     padding-top: 75px;
 }
 .mobile_message{
+    background-image: url(../images/notSnake.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: grey;
+    font-family: MG_Title;
+    text-align: center;
+    color: #FFC500;
     width: 100vw;
     height: 100vh;
 }
@@ -57,15 +65,14 @@ header > div.container {
     color: red;
     padding: 0 10px;
 }
-aside{
+aside, .modal-title {
     font-family: MG_Standard;
     border-radius: 10px;
 }
-aside > h2 {
-    font-weight: 700;
+aside > h2, .modal-title {
     color: #FFC500;
 }
-aside > div.accuracy > p.value {
+aside > div.accuracy > p > span {
     font-family: "Arial Black";
 }
 .label {
@@ -140,8 +147,34 @@ footer{
     height: 125px;
 }
 .copyright{
+    font-family: MG_SubTitle;
     position: relative;
     top: 55px;
+}
+.copyright > a, .copyright > a:hover {
+    text-decoration: none;
+    color: white;
+}
+.modal-header{
+    border-bottom: 2px solid #FFC500;
+}
+.modal-body {
+    height: 340px;
+    background-image: url(../images/metalGearRex.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+}
+.modal-content{
+    background-color: rgba(3,3,3,.8);
+}
+.close{
+    color: #FFF;
+}
+.close:hover{
+    color: #FFF;
 }
 /*ABOUT ME CSS*/
 body > section.container-fluid{
@@ -186,5 +219,8 @@ ul.skillsText > li {
     .card {
         width: 85px;
         height: 140px;
+    }
+    body > section {
+        height: 76vh;
     }
 }
